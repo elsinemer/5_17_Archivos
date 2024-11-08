@@ -1,0 +1,28 @@
+from collections import Counter
+import re
+
+def contar_palabras_mas_comunes(archivo):
+    # Leer y procesar el archivo
+    try:
+        with open(archivo, "r") as f:
+            texto = f.read().lower()  # Leer todo el texto en minúsculas
+
+        # Usar expresiones regulares para encontrar palabras
+        palabras = re.findall(r'\b\w+\b', texto)
+
+        # Contar las ocurrencias de cada palabra
+        contador_palabras = Counter(palabras)
+
+        # Obtener las 5 palabras más comunes
+        palabras_comunes = contador_palabras.most_common(5)
+
+        # Mostrar las palabras más comunes
+        print("Las 5 palabras más comunes son:")
+        for palabra, frecuencia in palabras_comunes:
+            print(f"'{palabra}': {frecuencia} veces")
+
+    except FileNotFoundError:
+        print(f"El archivo '{archivo}' no se encontró.")
+
+# Llamar a la función para contar palabras
+contar_palabras_mas_comunes("libros.txt")
