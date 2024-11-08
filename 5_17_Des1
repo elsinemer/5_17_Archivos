@@ -1,0 +1,13 @@
+def agregar_prestamo():
+    # Solicitar la información del préstamo al usuario
+    nombre_libro = input("Ingrese el nombre del libro: ")
+    fecha_prestamo = input("Ingrese la fecha del préstamo (dd-mm-aaaa): ")
+
+    # Abrir el archivo en modo 'a' para agregar al final sin sobrescribir
+    with open("prestamos.txt", "a") as archivo:
+        # Escribir el registro en el archivo
+        archivo.write(f"{nombre_libro}, {fecha_prestamo}\n")
+        print("Registro agregado con éxito.")
+
+# Llamada a la función para agregar un nuevo préstamo
+agregar_prestamo()
